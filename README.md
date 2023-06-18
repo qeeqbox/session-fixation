@@ -4,8 +4,8 @@ A threat actor may trick a user into using a known session identifier to log in.
 
 ## Example #1
 1. Threat actor visits the vulnerable website without logging in and obtains a session identifier
-2. Threat actor tricks bob into logging into the vulnerable website using the session identifier
-3. Threat actor uses the same session identifier to gain unauthorized access to bob's account
+2. Threat actor tricks a victim into logging into the vulnerable website using the session identifier
+3. Threat actor uses the same session identifier to gain unauthorized access to the victim's account
 
 ## Impact
 Vary
