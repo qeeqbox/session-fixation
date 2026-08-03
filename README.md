@@ -1,7 +1,57 @@
 <p align="center"> <img src="https://raw.githubusercontent.com/qeeqbox/session-fixation/main/content/session-fixation.svg"></p>
 
-An application manages session identifiers in an insecure manner, making them susceptible to reuse by threat actors. Session identifiers are crucial for maintaining a user's authenticated session. If an application permits the reuse of a session identifier, a threat actor could trick a victim into logging in with a session identifier they already control. Once the victim successfully logs in, the threat actor can use that same session identifier to hijack the authenticated session and impersonate the legitimate user.
+## Session Fixation
+Session fixation is a web application security vulnerability that allows an attacker to force a victim to use a session identifier already known to the attacker. If the application fails to generate a new session identifier after the user authenticates, the attacker can reuse the known session ID to access the victim's authenticated session.
 
+Unlike traditional session hijacking, where an attacker steals an already authenticated session, session fixation involves the attacker knowing the session identifier before the victim logs in. The attack relies on the application incorrectly maintaining the session after authentication.
+
+## How Session Fixation Works
+1. Attacker Obtains a Valid Session Identifier: The attacker visits the target application and receives a valid but unauthenticated session identifier. At this point, the session belongs to the attacker but is not yet authenticated.
+2. Attacker Forces the Victim to Use the Fixed Session ID: The attacker tricks the victim into using the known session identifier. As a result, the victim's browser now uses the session identifier known by the attacker.
+3. Victim Authenticates: The victim logs into the application using their username and password. If the application is vulnerable and keeps the same session identifier, the attacker still knows the identifier since it did not change after authentication.
+4. Attacker Hijacks the Authenticated Session: In this type of attack, the attacker utilizes a known session identifier. The application mistakenly accepts the request as originating from the authenticated victim, thereby allowing the attacker access to the user's account.
+
+## Impact of Session Fixation
+Successful session fixation attacks can lead to:
+- Account Takeover: Attackers can gain access to the victim's account without knowing their password.
+- Unauthorized Actions
+  - Change account settings
+  - Access private information
+  - Perform transactions
+  - Modify user data
+- Data Exposure
+  - Attackers may access sensitive information available within the authenticated session.
+- Financial and Reputation Damage
+  - Organizations may face:
+  - Financial losses
+  - Damage to customer trust
+  - Compliance and security repercussions
+
+## Session Fixation Mitigation Strategies
+To prevent Session Fixation:
+- Regenerate Session IDs After Authentication: The primary defense is to create a new session identifier upon successful login. The old session identifier should be invalidated.
+- Use Strong Session Management
+   - Generate session IDs using cryptographically secure random number generators.
+   - Ensure sufficient entropy to prevent prediction.
+   - Expire inactive sessions.
+   - Invalidate sessions after logout.
+   - Provide users the option to revoke active sessions.
+- Enable Secure Cookie Settings  
+   - Secure: Ensures cookies are sent only over HTTPS.
+   - HttpOnly: Prevents client-side JavaScript from accessing cookies directly.
+   - SameSite: Reduces the risk of cross-site request attacks like CSRF.
+- Enforce HTTPS: TLS encryption protects session identifiers from being intercepted or modified during transmission. Applications should:
+   - Require HTTPS for all communications.
+   - Enable secure cookie transmission.
+   - Avoid sending session identifiers through insecure channels.
+- Monitor Session Activity
+   - Multiple locations using the same session
+   - Unexpected device changes
+   - Abnormal login patterns
+   - Unusual session activities
+- Implement Additional Authentication Controls: Multi-factor authentication (MFA) provides further protection against stolen credentials. However, it's important to note that MFA does not directly prevent session fixation, as the attack occurs after authentication if the session identifier is not regenerated.
+
+## Example
 Clone this current repo recursively
 ```sh
 git clone --recurse-submodules https://github.com/qeeqbox/session-fixation
