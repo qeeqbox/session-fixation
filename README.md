@@ -28,7 +28,7 @@ Successful session fixation attacks can lead to:
   - Compliance and security repercussions
 
 ## Session Fixation Mitigation Strategies
-To prevent Session Fixation:
+To prevent Session Fixation vulnerabilities:
 - Regenerate Session IDs After Authentication: The primary defense is to create a new session identifier upon successful login. The old session identifier should be invalidated.
 - Use Strong Session Management
    - Generate session IDs using cryptographically secure random number generators.
