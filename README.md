@@ -12,7 +12,7 @@ Unlike traditional session hijacking, where an attacker steals an already authen
 4. Attacker Hijacks the Authenticated Session: In this type of attack, the attacker utilizes a known session identifier. The application mistakenly accepts the request as originating from the authenticated victim, thereby allowing the attacker access to the user's account.
 
 ## Impact of Session Fixation
-Successful session fixation attacks can lead to:
+Successful session fixation exploitation can lead to:
 - Account Takeover: Attackers can gain access to the victim's account without knowing their password.
 - Unauthorized Actions
   - Change account settings
