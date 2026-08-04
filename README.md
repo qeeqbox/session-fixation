@@ -51,7 +51,7 @@ To prevent Session Fixation vulnerabilities:
    - Unusual session activities
 - Implement Additional Authentication Controls: Multi-factor authentication (MFA) provides further protection against stolen credentials. However, it's important to note that MFA does not directly prevent session fixation, as the attack occurs after authentication if the session identifier is not regenerated.
 
-## Example
+## Session Fixation Example
 Clone this current repo recursively
 ```sh
 git clone --recurse-submodules https://github.com/qeeqbox/session-fixation
