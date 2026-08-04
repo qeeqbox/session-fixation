@@ -11,7 +11,7 @@ Unlike traditional session hijacking, where an attacker steals an already authen
 3. Victim Authenticates: The victim logs into the application using their username and password. If the application is vulnerable and keeps the same session identifier, the attacker still knows the identifier since it did not change after authentication.
 4. Attacker Hijacks the Authenticated Session: In this type of attack, the attacker utilizes a known session identifier. The application mistakenly accepts the request as originating from the authenticated victim, thereby allowing the attacker access to the user's account.
 
-## Impact of Session Fixation
+## Session Fixation Impact
 - Account Takeover: Attackers can gain access to the victim's account without knowing their password.
 - Unauthorized Actions
   - Change account settings
@@ -26,7 +26,7 @@ Unlike traditional session hijacking, where an attacker steals an already authen
   - Damage to customer trust
   - Compliance and security repercussions
 
-## Session Fixation Mitigation Strategies
+## Session Fixation Mitigation
 - Regenerate Session IDs After Authentication: The primary defense is to create a new session identifier upon successful login. The old session identifier should be invalidated.
 - Use Strong Session Management
    - Generate session IDs using cryptographically secure random number generators.
